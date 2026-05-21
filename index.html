@@ -20,10 +20,85 @@
 
     <div class="sidebar" id="mySidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-        <a href="#">Men's Fashion</a>
-        <a href="#">Women's Fashion</a>
-        <a href="#">Electronics</a>
-        <a href="#">Home & Living</a>
+        <div class="side-nav" id="mySidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+  <button class="dropdown-btn">Men’s Fashion</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/men-tshirt.jpg" alt="T-Shirts"><a href="#">T-Shirts</a></div>
+    <div class="category-item"><img src="images/men-shirt.jpg" alt="Shirts"><a href="#">Shirts</a></div>
+    <div class="category-item"><img src="images/men-jeans.jpg" alt="Jeans"><a href="#">Jeans</a></div>
+    <div class="category-item"><img src="images/men-trousers.jpg" alt="Trousers"><a href="#">Trousers</a></div>
+    <div class="category-item"><img src="images/men-jackets.jpg" alt="Jackets"><a href="#">Jackets</a></div>
+    <div class="category-item"><img src="images/men-ethnic.jpg" alt="Ethnic Wear"><a href="#">Ethnic Wear</a></div>
+    <div class="category-item"><img src="images/men-active.jpg" alt="Activewear"><a href="#">Activewear</a></div>
+    <div class="category-item"><img src="images/men-inner.jpg" alt="Innerwear"><a href="#">Innerwear</a></div>
+  </div>
+
+  <button class="dropdown-btn">Women’s Fashion</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/women-kurtas.jpg" alt="Kurtas"><a href="#">Kurtas & Suits</a></div>
+    <div class="category-item"><img src="images/women-saree.jpg" alt="Sarees"><a href="#">Sarees</a></div>
+    <div class="category-item"><img src="images/women-tops.jpg" alt="Tops"><a href="#">Tops & T-Shirts</a></div>
+    <div class="category-item"><img src="images/women-dresses.jpg" alt="Dresses"><a href="#">Dresses</a></div>
+    <div class="category-item"><img src="images/women-jeans.jpg" alt="Jeans"><a href="#">Jeans & Jeggings</a></div>
+    <div class="category-item"><img src="images/women-lehenga.jpg" alt="Lehengas"><a href="#">Lehengas</a></div>
+    <div class="category-item"><img src="images/women-active.jpg" alt="Activewear"><a href="#">Activewear</a></div>
+  </div>
+
+  <button class="dropdown-btn">Kids Wear</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/kids-boys.jpg" alt="Boys Clothing"><a href="#">Boys Clothing</a></div>
+    <div class="category-item"><img src="images/kids-girls.jpg" alt="Girls Clothing"><a href="#">Girls Clothing</a></div>
+    <div class="category-item"><img src="images/kids-infants.jpg" alt="Infants"><a href="#">Infants (0-2Y)</a></div>
+    <div class="category-item"><img src="images/kids-footwear.jpg" alt="Kids Footwear"><a href="#">Kids Footwear</a></div>
+    <div class="category-item"><img src="images/kids-toys.jpg" alt="Toys"><a href="#">Toys & Games</a></div>
+  </div>
+
+  <button class="dropdown-btn">Footwear</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/foot-sports.jpg" alt="Sports Shoes"><a href="#">Sports Shoes</a></div>
+    <div class="category-item"><img src="images/foot-casual.jpg" alt="Casual Shoes"><a href="#">Casual Shoes</a></div>
+    <div class="category-item"><img src="images/foot-formal.jpg" alt="Formal Shoes"><a href="#">Formal Shoes</a></div>
+    <div class="category-item"><img src="images/foot-heels.jpg" alt="Heels"><a href="#">Heels & Flats</a></div>
+    <div class="category-item"><img src="images/foot-sandals.jpg" alt="Sandals"><a href="#">Sandals & Floaters</a></div>
+  </div>
+
+  <button class="dropdown-btn">Beauty & Grooming</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/beauty-makeup.jpg" alt="Makeup"><a href="#">Makeup</a></div>
+    <div class="category-item"><img src="images/beauty-skin.jpg" alt="Skincare"><a href="#">Skincare</a></div>
+    <div class="category-item"><img src="images/beauty-hair.jpg" alt="Haircare"><a href="#">Haircare</a></div>
+    <div class="category-item"><img src="images/beauty-fragrance.jpg" alt="Fragrances"><a href="#">Fragrances</a></div>
+    <div class="category-item"><img src="images/beauty-men.jpg" alt="Men's Grooming"><a href="#">Men's Grooming</a></div>
+  </div>
+
+  <button class="dropdown-btn">Home & Living</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/home-bed.jpg" alt="Bedsheets"><a href="#">Bedsheets & Bedding</a></div>
+    <div class="category-item"><img src="images/home-decor.jpg" alt="Decor"><a href="#">Home Decor</a></div>
+    <div class="category-item"><img src="images/home-kitchen.jpg" alt="Kitchen"><a href="#">Kitchen & Dining</a></div>
+    <div class="category-item"><img src="images/home-bath.jpg" alt="Bath"><a href="#">Bath & Towels</a></div>
+    <div class="category-item"><img src="images/home-lamps.jpg" alt="Lamps"><a href="#">Lamps & Lighting</a></div>
+  </div>
+
+  <button class="dropdown-btn">Accessories</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/acc-watch.jpg" alt="Watches"><a href="#">Watches</a></div>
+    <div class="category-item"><img src="images/acc-bag.jpg" alt="Bags"><a href="#">Bags & Backpacks</a></div>
+    <div class="category-item"><img src="images/acc-sunglass.jpg" alt="Sunglasses"><a href="#">Sunglasses</a></div>
+    <div class="category-item"><img src="images/acc-belt.jpg" alt="Belts"><a href="#">Belts & Wallets</a></div>
+  </div>
+
+  <button class="dropdown-btn">Jewellery</button>
+  <div class="dropdown-container">
+    <div class="category-item"><img src="images/jewel-earrings.jpg" alt="Earrings"><a href="#">Earrings</a></div>
+    <div class="category-item"><img src="images/jewel-set.jpg" alt="Jewellery Sets"><a href="#">Jewellery Sets</a></div>
+    <div class="category-item"><img src="images/jewel-bangles.jpg" alt="Bangles"><a href="#">Bangles & Bracelets</a></div>
+    <div class="category-item"><img src="images/jewel-rings.jpg" alt="Rings"><a href="#">Rings</a></div>
+  </div>
+</div>
+
     </div>
 
     <header>
