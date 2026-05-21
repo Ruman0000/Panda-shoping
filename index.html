@@ -1,139 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panda Shopping | Premium Curation</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panda Shopping</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#111;
+position:sticky;
+top:0;
+z-index:1000;
+border-bottom:1px solid #222;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:gold;
+}
+
+.menu-btn{
+font-size:30px;
+cursor:pointer;
+}
+
+.sidebar{
+position:fixed;
+left:-100%;
+top:0;
+width:280px;
+height:100%;
+background:#111;
+overflow:auto;
+transition:0.4s;
+z-index:9999;
+padding:20px;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.sidebar h2{
+margin-bottom:20px;
+color:gold;
+}
+
+.sidebar button{
+width:100%;
+padding:14px;
+margin-top:10px;
+background:#1b1b1b;
+border:none;
+color:white;
+text-align:left;
+font-size:16px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.dropdown-container{
+display:none;
+padding-left:10px;
+}
+
+.dropdown-container a{
+display:block;
+padding:10px;
+color:#ccc;
+}
+
+.hero{
+padding:30px;
+text-align:center;
+}
+
+.hero img{
+width:140px;
+border-radius:50%;
+border:3px solid gold;
+}
+
+.hero h1{
+margin-top:15px;
+font-size:40px;
+color:gold;
+}
+
+.search-box{
+padding:15px;
+}
+
+.search-box input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#111;
+color:white;
+font-size:16px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.product{
+background:#111;
+border-radius:20px;
+overflow:hidden;
+border:1px solid #222;
+transition:0.3s;
+}
+
+.product:hover{
+transform:scale(1.03);
+}
+
+.product img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.product-info{
+padding:15px;
+}
+
+.product-info h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.rating{
+color:gold;
+margin-bottom:8px;
+}
+
+.price{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.product-buttons{
+display:flex;
+justify-content:space-between;
+}
+
+.product-buttons button{
+flex:1;
+margin:4px;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.buy-btn{
+background:gold;
+color:black;
+}
+
+.share-btn{
+background:#222;
+color:white;
+}
+
+.settings-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:gold;
+color:black;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+cursor:pointer;
+z-index:999;
+}
+
+.settings-panel{
+position:fixed;
+bottom:-100%;
+left:0;
+width:100%;
+background:#111;
+padding:20px;
+border-top-left-radius:20px;
+border-top-right-radius:20px;
+transition:0.4s;
+z-index:9999;
+}
+
+.settings-panel.active{
+bottom:0;
+}
+
+.settings-panel button{
+width:100%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+background:gold;
+color:black;
+font-weight:bold;
+}
+
+.upload-panel{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+overflow:auto;
+padding:20px;
+display:none;
+z-index:99999;
+}
+
+.upload-panel h2{
+text-align:center;
+color:gold;
+margin-bottom:20px;
+}
+
+.upload-panel input,
+.upload-panel select{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:#111;
+border:none;
+border-radius:10px;
+color:white;
+}
+
+.upload-panel button{
+width:100%;
+padding:15px;
+margin-top:20px;
+background:gold;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.contact-panel{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:99999;
+padding:20px;
+}
+
+.contact-panel h2{
+color:gold;
+margin-bottom:20px;
+}
+
+.contact-panel p{
+margin-top:15px;
+font-size:18px;
+color:#ccc;
+}
+
+.close-btn{
+background:red !important;
+color:white !important;
+margin-top:15px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <div class="menu-btn" onclick="toggleSidebar()">☰</div>
-        <div class="logo">PANDA <span>SHOPPING</span></div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Trending</a></li>
-            <li><a href="#">Categories</a></li>
-        </ul>
-    </nav>
+<nav>
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+<div class="logo">PANDA SHOPPING</div>
+</nav>
 
-<div class="sidebar" id="mySidebar">
-    
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
-    <div class="side-nav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    </div>
-    
+<div class="sidebar" id="sidebar">
 
-  <button class="dropdown-btn">Men’s Fashion</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/men-tshirt.jpg" alt="T-Shirts"><a href="#">T-Shirts</a></div>
-    <div class="category-item"><img src="images/men-shirt.jpg" alt="Shirts"><a href="#">Shirts</a></div>
-    <div class="category-item"><img src="images/men-jeans.jpg" alt="Jeans"><a href="#">Jeans</a></div>
-    <div class="category-item"><img src="images/men-trousers.jpg" alt="Trousers"><a href="#">Trousers</a></div>
-    <div class="category-item"><img src="images/men-jackets.jpg" alt="Jackets"><a href="#">Jackets</a></div>
-    <div class="category-item"><img src="images/men-ethnic.jpg" alt="Ethnic Wear"><a href="#">Ethnic Wear</a></div>
-    <div class="category-item"><img src="images/men-active.jpg" alt="Activewear"><a href="#">Activewear</a></div>
-    <div class="category-item"><img src="images/men-inner.jpg" alt="Innerwear"><a href="#">Innerwear</a></div>
-  </div>
+<h2>Categories</h2>
 
-  <button class="dropdown-btn">Women’s Fashion</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/women-kurtas.jpg" alt="Kurtas"><a href="#">Kurtas & Suits</a></div>
-    <div class="category-item"><img src="images/women-saree.jpg" alt="Sarees"><a href="#">Sarees</a></div>
-    <div class="category-item"><img src="images/women-tops.jpg" alt="Tops"><a href="#">Tops & T-Shirts</a></div>
-    <div class="category-item"><img src="images/women-dresses.jpg" alt="Dresses"><a href="#">Dresses</a></div>
-    <div class="category-item"><img src="images/women-jeans.jpg" alt="Jeans"><a href="#">Jeans & Jeggings</a></div>
-    <div class="category-item"><img src="images/women-lehenga.jpg" alt="Lehengas"><a href="#">Lehengas</a></div>
-    <div class="category-item"><img src="images/women-active.jpg" alt="Activewear"><a href="#">Activewear</a></div>
-  </div>
-
-  <button class="dropdown-btn">Kids Wear</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/kids-boys.jpg" alt="Boys Clothing"><a href="#">Boys Clothing</a></div>
-    <div class="category-item"><img src="images/kids-girls.jpg" alt="Girls Clothing"><a href="#">Girls Clothing</a></div>
-    <div class="category-item"><img src="images/kids-infants.jpg" alt="Infants"><a href="#">Infants (0-2Y)</a></div>
-    <div class="category-item"><img src="images/kids-footwear.jpg" alt="Kids Footwear"><a href="#">Kids Footwear</a></div>
-    <div class="category-item"><img src="images/kids-toys.jpg" alt="Toys"><a href="#">Toys & Games</a></div>
-  </div>
-
-  <button class="dropdown-btn">Footwear</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/foot-sports.jpg" alt="Sports Shoes"><a href="#">Sports Shoes</a></div>
-    <div class="category-item"><img src="images/foot-casual.jpg" alt="Casual Shoes"><a href="#">Casual Shoes</a></div>
-    <div class="category-item"><img src="images/foot-formal.jpg" alt="Formal Shoes"><a href="#">Formal Shoes</a></div>
-    <div class="category-item"><img src="images/foot-heels.jpg" alt="Heels"><a href="#">Heels & Flats</a></div>
-    <div class="category-item"><img src="images/foot-sandals.jpg" alt="Sandals"><a href="#">Sandals & Floaters</a></div>
-  </div>
-
-  <button class="dropdown-btn">Beauty & Grooming</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/beauty-makeup.jpg" alt="Makeup"><a href="#">Makeup</a></div>
-    <div class="category-item"><img src="images/beauty-skin.jpg" alt="Skincare"><a href="#">Skincare</a></div>
-    <div class="category-item"><img src="images/beauty-hair.jpg" alt="Haircare"><a href="#">Haircare</a></div>
-    <div class="category-item"><img src="images/beauty-fragrance.jpg" alt="Fragrances"><a href="#">Fragrances</a></div>
-    <div class="category-item"><img src="images/beauty-men.jpg" alt="Men's Grooming"><a href="#">Men's Grooming</a></div>
-  </div>
-
-  <button class="dropdown-btn">Home & Living</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/home-bed.jpg" alt="Bedsheets"><a href="#">Bedsheets & Bedding</a></div>
-    <div class="category-item"><img src="images/home-decor.jpg" alt="Decor"><a href="#">Home Decor</a></div>
-    <div class="category-item"><img src="images/home-kitchen.jpg" alt="Kitchen"><a href="#">Kitchen & Dining</a></div>
-    <div class="category-item"><img src="images/home-bath.jpg" alt="Bath"><a href="#">Bath & Towels</a></div>
-    <div class="category-item"><img src="images/home-lamps.jpg" alt="Lamps"><a href="#">Lamps & Lighting</a></div>
-  </div>
-
-  <button class="dropdown-btn">Accessories</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/acc-watch.jpg" alt="Watches"><a href="#">Watches</a></div>
-    <div class="category-item"><img src="images/acc-bag.jpg" alt="Bags"><a href="#">Bags & Backpacks</a></div>
-    <div class="category-item"><img src="images/acc-sunglass.jpg" alt="Sunglasses"><a href="#">Sunglasses</a></div>
-    <div class="category-item"><img src="images/acc-belt.jpg" alt="Belts"><a href="#">Belts & Wallets</a></div>
-  </div>
-
-  <button class="dropdown-btn">Jewellery</button>
-  <div class="dropdown-container">
-    <div class="category-item"><img src="images/jewel-earrings.jpg" alt="Earrings"><a href="#">Earrings</a></div>
-    <div class="category-item"><img src="images/jewel-set.jpg" alt="Jewellery Sets"><a href="#">Jewellery Sets</a></div>
-    <div class="category-item"><img src="images/jewel-bangles.jpg" alt="Bangles"><a href="#">Bangles & Bracelets</a></div>
-    <div class="category-item"><img src="images/jewel-rings.jpg" alt="Rings"><a href="#">Rings</a></div>
-  </div>
+<button class="dropdown-btn">Men Fashion</button>
+<div class="dropdown-container">
+<a href="#">T-Shirts</a>
+<a href="#">Shirts</a>
+<a href="#">Jeans</a>
+<a href="#">Sports Shoes</a>
 </div>
 
-    </div>
+<button class="dropdown-btn">Women Fashion</button>
+<div class="dropdown-container">
+<a href="#">Sarees</a>
+<a href="#">Dresses</a>
+<a href="#">Heels</a>
+</div>
 
-    <header>
-        <div class="header-content">
-            <p class="tagline">Luxury & Premium Products Curated Just For You</p>
-        </div>
-    </header>
+<button class="dropdown-btn">Kids Wear</button>
+<div class="dropdown-container">
+<a href="#">Kids Clothing</a>
+<a href="#">Toys</a>
+</div>
 
-    <main class="container">
-        <!-- प्रोडक्ट कार्ड्स यहाँ रहेंगे -->
-    </main>
+<button class="dropdown-btn">Beauty</button>
+<div class="dropdown-container">
+<a href="#">Perfumes</a>
+<a href="#">Skincare</a>
+</div>
 
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("mySidebar");
-            sidebar.classList.toggle('active');
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+<button class="dropdown-btn">Accessories</button>
+<div class="dropdown-container">
+<a href="#">Watches</a>
+<a href="#">Bags</a>
+<a href="#">Sunglasses</a>
+</div>
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
+</div>
+
+<div class="hero">
+
+<img src="https://i.imgur.com/Z6X6K0P.png">
+
+<h1>Panda Shopping</h1>
+
+</div>
+
+<div class="search-box">
+<input type="text" placeholder="Search products...">
+</div>
+
+<div class="products" id="products">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<div class="product-info">
+<h3>Luxury Watch</h3>
+<div class="rating">⭐⭐⭐⭐⭐ 4.9</div>
+<div class="price">₹2999</div>
+
+<div class="product-buttons">
+<button class="buy-btn" onclick="window.open('https://amazon.in')">BUY</button>
+
+<button class="share-btn" onclick="shareProduct()">SHARE</button>
+</div>
+
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+<div class="product-info">
+<h3>Sports Shoes</h3>
+<div class="rating">⭐⭐⭐⭐ 4.7</div>
+<div class="price">₹1999</div>
+
+<div class="product-buttons">
+<button class="buy-btn" onclick="window.open('https://flipkart.com')">BUY</button>
+
+<button class="share-btn" onclick="shareProduct()">SHARE</button>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="settings-btn" onclick="openSettings()">
+⚙
+</div>
+
+<div class="settings-panel" id="settingsPanel">
+
+<button onclick="openUpload()">UPLOAD PRODUCT</button>
+
+<button onclick="openContact()">CONTACT</button>
+
+<button class="close-btn" onclick="closeSettings()">CLOSE</button>
+
+</div>
+
+<div class="upload-panel" id="uploadPanel">
+
+<h2>Upload Product</h2>
+
+<input type="password" id="password" placeholder="Enter Password">
+
+<button onclick="unlockUpload()">Unlock Upload</button>
+
+<div id="uploadForm" style="display:none;">
+
+<input type="text" placeholder="Product Link">
+
+<input type="file">
+
+<input type="number" placeholder="Price">
+
+<select>
+<option>Select Category</option>
+<option>T-Shirts</option>
+<option>Shirts</option>
+<option>Jeans</option>
+<option>Sports Shoes</option>
+<option>Sarees</option>
+<option>Perfumes</option>
+<option>Watches</option>
+</select>
+
+<button>UPLOAD PRODUCT</button>
+
+</div>
+
+<button class="close-btn" onclick="closeUpload()">Close</button>
+
+</div>
+
+<div class="contact-panel" id="contactPanel">
+
+<h2>Contact</h2>
+
+<p>Instagram: __________</p>
+
+<p>Gmail: __________</p>
+
+<p>Facebook: __________</p>
+
+<button class="close-btn" onclick="closeContact()">Close</button>
+
+</div>
+
+<script>
+
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("active");
 }
-        
-    </script>
+
+var dropdown=document.getElementsByClassName("dropdown-btn");
+
+for(let i=0;i<dropdown.length;i++){
+
+dropdown[i].addEventListener("click",function(){
+
+this.classList.toggle("active");
+
+var content=this.nextElementSibling;
+
+if(content.style.display==="block"){
+content.style.display="none";
+}else{
+content.style.display="block";
+}
+
+});
+
+}
+
+function shareProduct(){
+
+if(navigator.share){
+
+navigator.share({
+title:'Panda Shopping',
+text:'Check this product',
+url:window.location.href
+});
+
+}else{
+
+alert("Share not supported");
+
+}
+
+}
+
+function openSettings(){
+document.getElementById("settingsPanel").classList.add("active");
+}
+
+function closeSettings(){
+document.getElementById("settingsPanel").classList.remove("active");
+}
+
+function openUpload(){
+document.getElementById("uploadPanel").style.display="block";
+}
+
+function closeUpload(){
+document.getElementById("uploadPanel").style.display="none";
+}
+
+function openContact(){
+document.getElementById("contactPanel").style.display="block";
+}
+
+function closeContact(){
+document.getElementById("contactPanel").style.display="none";
+}
+
+function unlockUpload(){
+
+let password=document.getElementById("password").value;
+
+if(password==="Rumansk0000@"){
+
+document.getElementById("uploadForm").style.display="block";
+
+alert("Upload Unlocked");
+
+}else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
