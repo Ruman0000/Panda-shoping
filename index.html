@@ -5,321 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panda Shopping</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
-}
-
-body{
-background:#000;
-color:#fff;
-}
-
-a{
-text-decoration:none;
-color:white;
-}
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-background:#111;
-position:sticky;
-top:0;
-z-index:1000;
-border-bottom:1px solid #222;
-}
-
-.logo{
-font-size:28px;
-font-weight:bold;
-color:gold;
-}
-
-.menu-btn{
-font-size:30px;
-cursor:pointer;
-}
-
-.sidebar{
-position:fixed;
-left:-100%;
-top:0;
-width:280px;
-height:100%;
-background:#111;
-overflow:auto;
-transition:0.4s;
-z-index:9999;
-padding:20px;
-}
-
-.sidebar.active{
-left:0;
-}
-
-.sidebar h2{
-margin-bottom:20px;
-color:gold;
-}
-
-.sidebar button{
-width:100%;
-padding:14px;
-margin-top:10px;
-background:#1b1b1b;
-border:none;
-color:white;
-text-align:left;
-font-size:16px;
-border-radius:10px;
-cursor:pointer;
-}
-
-.dropdown-container{
-display:none;
-padding-left:10px;
-}
-
-.dropdown-container a{
-display:block;
-padding:10px;
-color:#ccc;
-}
-
-.hero{
-padding:30px;
-text-align:center;
-}
-
-.hero img{
-width:140px;
-border-radius:50%;
-border:3px solid gold;
-}
-
-.hero h1{
-margin-top:15px;
-font-size:40px;
-color:gold;
-}
-
-.search-box{
-padding:15px;
-}
-
-.search-box input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-background:#111;
-color:white;
-font-size:16px;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-padding:20px;
-}
-
-.product{
-background:#111;
-border-radius:20px;
-overflow:hidden;
-border:1px solid #222;
-transition:0.3s;
-}
-
-.product:hover{
-transform:scale(1.03);
-}
-
-.product img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-
-.product-info{
-padding:15px;
-}
-
-.product-info h3{
-font-size:18px;
-margin-bottom:8px;
-}
-
-.rating{
-color:gold;
-margin-bottom:8px;
-}
-
-.price{
-font-size:20px;
-font-weight:bold;
-margin-bottom:10px;
-}
-
-.product-buttons{
-display:flex;
-justify-content:space-between;
-}
-
-.product-buttons button{
-flex:1;
-margin:4px;
-padding:10px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.buy-btn{
-background:gold;
-color:black;
-}
-
-.share-btn{
-background:#222;
-color:white;
-}
-
-.settings-btn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:gold;
-color:black;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-cursor:pointer;
-z-index:999;
-}
-
-.settings-panel{
-position:fixed;
-bottom:-100%;
-left:0;
-width:100%;
-background:#111;
-padding:20px;
-border-top-left-radius:20px;
-border-top-right-radius:20px;
-transition:0.4s;
-z-index:9999;
-}
-
-.settings-panel.active{
-bottom:0;
-}
-
-.settings-panel button{
-width:100%;
-padding:15px;
-margin-top:10px;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
-background:gold;
-color:black;
-font-weight:bold;
-}
-
-.upload-panel{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-overflow:auto;
-padding:20px;
-display:none;
-z-index:99999;
-}
-
-.upload-panel h2{
-text-align:center;
-color:gold;
-margin-bottom:20px;
-}
-
-.upload-panel input,
-.upload-panel select{
-width:100%;
-padding:15px;
-margin-top:15px;
-background:#111;
-border:none;
-border-radius:10px;
-color:white;
-}
-
-.upload-panel button{
-width:100%;
-padding:15px;
-margin-top:20px;
-background:gold;
-border:none;
-border-radius:10px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.contact-panel{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-z-index:99999;
-padding:20px;
-}
-
-.contact-panel h2{
-color:gold;
-margin-bottom:20px;
-}
-
-.contact-panel p{
-margin-top:15px;
-font-size:18px;
-color:#ccc;
-}
-
-.close-btn{
-background:red !important;
-color:white !important;
-margin-top:15px;
-}
-
-</style>
 </head>
 
 <body>
 
 <nav>
+
 <div class="menu-btn" onclick="toggleSidebar()">☰</div>
-<div class="logo">PANDA SHOPPING</div>
+
+<div class="logo">
+PANDA SHOPPING
+</div>
+
 </nav>
 
 <div class="sidebar" id="sidebar">
@@ -327,6 +26,7 @@ margin-top:15px;
 <h2>Categories</h2>
 
 <button class="dropdown-btn">Men Fashion</button>
+
 <div class="dropdown-container">
 <a href="#">T-Shirts</a>
 <a href="#">Shirts</a>
@@ -335,6 +35,7 @@ margin-top:15px;
 </div>
 
 <button class="dropdown-btn">Women Fashion</button>
+
 <div class="dropdown-container">
 <a href="#">Sarees</a>
 <a href="#">Dresses</a>
@@ -342,157 +43,232 @@ margin-top:15px;
 </div>
 
 <button class="dropdown-btn">Kids Wear</button>
+
 <div class="dropdown-container">
 <a href="#">Kids Clothing</a>
 <a href="#">Toys</a>
 </div>
 
 <button class="dropdown-btn">Beauty</button>
+
 <div class="dropdown-container">
 <a href="#">Perfumes</a>
 <a href="#">Skincare</a>
 </div>
 
-<button class="dropdown-btn">Accessories</button>
-<div class="dropdown-container">
-<a href="#">Watches</a>
-<a href="#">Bags</a>
-<a href="#">Sunglasses</a>
 </div>
 
-</div>
-
-<div class="hero">
+<section class="hero">
 
 <img src="https://i.imgur.com/Z6X6K0P.png">
 
 <h1>Panda Shopping</h1>
 
-</div>
+<p>Luxury Shopping Website</p>
+
+</section>
 
 <div class="search-box">
-<input type="text" placeholder="Search products...">
+
+<input type="text" placeholder="Search Products">
+
 </div>
 
-<div class="products" id="products">
+<section class="products">
 
 <div class="product">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-<div class="product-info">
-<h3>Luxury Watch</h3>
-<div class="rating">⭐⭐⭐⭐⭐ 4.9</div>
-<div class="price">₹2999</div>
 
-<div class="product-buttons">
-<button class="buy-btn" onclick="window.open('https://amazon.in')">BUY</button>
-
-<button class="share-btn" onclick="shareProduct()">SHARE</button>
-</div>
-
-</div>
-</div>
-
-<div class="product">
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+
 <div class="product-info">
+
 <h3>Sports Shoes</h3>
-<div class="rating">⭐⭐⭐⭐ 4.7</div>
-<div class="price">₹1999</div>
 
-<div class="product-buttons">
-<button class="buy-btn" onclick="window.open('https://flipkart.com')">BUY</button>
+<div class="rating">
+⭐⭐⭐⭐⭐ 4.9
+</div>
 
-<button class="share-btn" onclick="shareProduct()">SHARE</button>
+<div class="price">
+₹1999
+</div>
+
+<div class="buttons">
+
+<button class="buy-btn"
+onclick="window.open('https://amazon.in')">
+BUY
+</button>
+
+<button class="share-btn"
+onclick="shareProduct()">
+SHARE
+</button>
+
 </div>
 
 </div>
+
+</div>
+
+<div class="product">
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+
+<div class="product-info">
+
+<h3>Luxury Watch</h3>
+
+<div class="rating">
+⭐⭐⭐⭐⭐ 4.8
+</div>
+
+<div class="price">
+₹2999
+</div>
+
+<div class="buttons">
+
+<button class="buy-btn"
+onclick="window.open('https://flipkart.com')">
+BUY
+</button>
+
+<button class="share-btn"
+onclick="shareProduct()">
+SHARE
+</button>
+
+</div>
+
 </div>
 
 </div>
 
-<div class="settings-btn" onclick="openSettings()">
+</section>
+
+<div class="settings-btn"
+onclick="openSettings()">
 ⚙
 </div>
 
-<div class="settings-panel" id="settingsPanel">
+<div class="settings-panel"
+id="settingsPanel">
 
-<button onclick="openUpload()">UPLOAD PRODUCT</button>
+<button onclick="openUpload()">
+UPLOAD PRODUCT
+</button>
 
-<button onclick="openContact()">CONTACT</button>
+<button onclick="openContact()">
+CONTACT
+</button>
 
-<button class="close-btn" onclick="closeSettings()">CLOSE</button>
+<button class="close-btn"
+onclick="closeSettings()">
+CLOSE
+</button>
 
 </div>
 
-<div class="upload-panel" id="uploadPanel">
+<div class="upload-panel"
+id="uploadPanel">
 
 <h2>Upload Product</h2>
 
-<input type="password" id="password" placeholder="Enter Password">
+<input type="password"
+id="password"
+placeholder="Enter Password">
 
-<button onclick="unlockUpload()">Unlock Upload</button>
+<button onclick="unlockUpload()">
+Unlock Upload
+</button>
 
-<div id="uploadForm" style="display:none;">
+<div id="uploadForm"
+style="display:none;">
 
-<input type="text" placeholder="Product Link">
+<input type="text"
+placeholder="Product Link">
 
 <input type="file">
 
-<input type="number" placeholder="Price">
+<input type="number"
+placeholder="Price">
 
 <select>
+
 <option>Select Category</option>
+
 <option>T-Shirts</option>
+
 <option>Shirts</option>
+
 <option>Jeans</option>
+
 <option>Sports Shoes</option>
+
 <option>Sarees</option>
+
 <option>Perfumes</option>
-<option>Watches</option>
+
 </select>
 
-<button>UPLOAD PRODUCT</button>
+<button>
+UPLOAD PRODUCT
+</button>
 
 </div>
 
-<button class="close-btn" onclick="closeUpload()">Close</button>
+<button class="close-btn"
+onclick="closeUpload()">
+Close
+</button>
 
 </div>
 
-<div class="contact-panel" id="contactPanel">
+<div class="contact-panel"
+id="contactPanel">
 
 <h2>Contact</h2>
 
-<p>Instagram: __________</p>
+<p>Instagram: ________</p>
 
-<p>Gmail: __________</p>
+<p>Gmail: ________</p>
 
-<p>Facebook: __________</p>
+<p>Facebook: ________</p>
 
-<button class="close-btn" onclick="closeContact()">Close</button>
+<button class="close-btn"
+onclick="closeContact()">
+Close
+</button>
 
 </div>
 
 <script>
 
 function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("active");
+
+document.getElementById("sidebar")
+.classList.toggle("active");
+
 }
 
-var dropdown=document.getElementsByClassName("dropdown-btn");
+var dropdown =
+document.getElementsByClassName("dropdown-btn");
 
 for(let i=0;i<dropdown.length;i++){
 
 dropdown[i].addEventListener("click",function(){
 
-this.classList.toggle("active");
-
-var content=this.nextElementSibling;
+var content =
+this.nextElementSibling;
 
 if(content.style.display==="block"){
+
 content.style.display="none";
+
 }else{
+
 content.style.display="block";
+
 }
 
 });
@@ -504,9 +280,13 @@ function shareProduct(){
 if(navigator.share){
 
 navigator.share({
+
 title:'Panda Shopping',
+
 text:'Check this product',
+
 url:window.location.href
+
 });
 
 }else{
@@ -518,36 +298,56 @@ alert("Share not supported");
 }
 
 function openSettings(){
-document.getElementById("settingsPanel").classList.add("active");
+
+document.getElementById("settingsPanel")
+.classList.add("active");
+
 }
 
 function closeSettings(){
-document.getElementById("settingsPanel").classList.remove("active");
+
+document.getElementById("settingsPanel")
+.classList.remove("active");
+
 }
 
 function openUpload(){
-document.getElementById("uploadPanel").style.display="block";
+
+document.getElementById("uploadPanel")
+.style.display="block";
+
 }
 
 function closeUpload(){
-document.getElementById("uploadPanel").style.display="none";
+
+document.getElementById("uploadPanel")
+.style.display="none";
+
 }
 
 function openContact(){
-document.getElementById("contactPanel").style.display="block";
+
+document.getElementById("contactPanel")
+.style.display="block";
+
 }
 
 function closeContact(){
-document.getElementById("contactPanel").style.display="none";
+
+document.getElementById("contactPanel")
+.style.display="none";
+
 }
 
 function unlockUpload(){
 
-let password=document.getElementById("password").value;
+let password =
+document.getElementById("password").value;
 
 if(password==="Rumansk0000@"){
 
-document.getElementById("uploadForm").style.display="block";
+document.getElementById("uploadForm")
+.style.display="block";
 
 alert("Upload Unlocked");
 
