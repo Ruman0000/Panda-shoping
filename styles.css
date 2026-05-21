@@ -12,6 +12,10 @@
     padding-top: 60px;
 }
 
+.sidebar.active {
+    width: 250px;
+}
+
 .sidebar a {
     padding: 10px 15px 10px 25px;
     text-decoration: none;
